@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 import streamlit as st
-from streamlit_folium import st_folium
 import functions as ft 
 from PIL import Image
 
