@@ -2,7 +2,6 @@ pandas
 numpy
 seaborn
 matplotlib
-pyplot
 streamlit
 streamlit_folium
 folium
