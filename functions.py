@@ -7,7 +7,7 @@ from streamlit_folium import st_folium
 import plotly.express as px
 import seaborn as sns
 from folium import plugins 
-import zipfile
+
 
 
 
@@ -27,6 +27,7 @@ def intro():
 
 def carga_datos():
     # Leer CSV
+    
     with zipfile.ZipFile('listings_completo.zip') as zip_ref:
         zip_ref.extract('listings_completo.csv')
     global data 
