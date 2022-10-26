@@ -28,6 +28,53 @@ def carga_datos():
     global data 
     data = pd.read_csv('data_airbnb_limpio.csv', encoding= 'utf8', sep = ',')
     
+    # Limpieza de datos ejecutada con los datos del listing_completo comentada para subirlo a streamlit app
+    '''
+    # Eliminacion de columnas
+    data = data.drop(['scrape_id', 'last_scraped', 'source'], axis = 1)
+
+    data = data.drop(['description', 'neighborhood_overview', 'picture_url', 'host_url', 'host_since', 
+                    'host_location', 'host_about', 'host_response_time', 'host_response_rate', 'host_acceptance_rate',
+                    'host_is_superhost', 'host_thumbnail_url', 'host_picture_url', 'host_neighbourhood',
+                    'host_verifications', 'host_has_profile_pic', 'host_identity_verified','host_total_listings_count'], axis = 1)
+
+    data = data.drop(['neighbourhood', 'bathrooms', 'bathrooms_text', 'beds', 
+                    'amenities', 'bedrooms', 'minimum_minimum_nights', 'maximum_minimum_nights',
+                    'minimum_maximum_nights', 'maximum_maximum_nights', 'minimum_nights_avg_ntm',
+                    'maximum_nights_avg_ntm', 'calendar_updated', 'availability_60', 'availability_90', 
+                    'availability_365', 'calendar_last_scraped'], axis = 1)
+
+    data = data.drop(['number_of_reviews_ltm', 'number_of_reviews_l30d', 'first_review', 'review_scores_rating', 
+                    'review_scores_accuracy', 'review_scores_cleanliness', 'review_scores_checkin', 'review_scores_communication',
+                    'review_scores_location', 'review_scores_value', 'instant_bookable', 'calculated_host_listings_count_entire_homes',
+                    'calculated_host_listings_count_private_rooms', 'calculated_host_listings_count_shared_rooms',
+                    'reviews_per_month'], axis = 1)
+
+    data = data.drop(['id', 'host_listings_count', 'maximum_nights', 'last_review', 'availability_30', 
+                    'has_availability', 'neighbourhood_cleansed'], axis = 1)
+
+    # Renombrar columna
+
+    data = data.rename(columns={'neighbourhood_group_cleansed': 'neighbourhood', 'calculated_host_listings_count': 'host_lcount'})
+
+    # Eliminacion de filas con nulos en nombre
+
+    data = data[data.name.notnull()]
+
+    # Transformacion de datos de columna precio a 'int' por problemas
+
+    data['price'] = data['price'].str.replace('$',' ')
+    data['price'] = data['price'].str.replace(',','', regex=False).astype(float)
+    data['price'] = data['price'].astype(int)
+
+    # Reemplazar nulos y pasarlos a boolean
+
+    data['license'].fillna(0,inplace=True)
+    data['license'] = data['license'].apply(lambda x: 1 if x!=0 else 0)
+    data['license'] = data['license'].astype(bool)
+    
+    '''
+    
     return data
 
 def analisis_intro():
