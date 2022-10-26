@@ -10,4 +10,3 @@ plotly.express
 xlrd
 pydeck[jupyter]
 pydeck
-zipfile
